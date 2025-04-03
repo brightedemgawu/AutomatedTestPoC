@@ -16,13 +16,17 @@ struct ContentView: View {
                     self.viewModel.getArticles()
                 }
             case let .success(content):
-                NavigationView {
+                NavigationStack {
                     List(content) { article in
                         ArticleView(article: article)
                             .onTapGesture {
                                 load(url: article.url)
                             }
                     }
+                    .scrollContentBackground(.hidden)
+                    .listRowSpacing(8)
+                    .scrollIndicators(.hidden)
+                    .background(Color("pageBackground"))
                     .navigationBarTitle("News")
                 }
             }
