@@ -41,20 +41,20 @@ struct ArticleView: View {
                     .frame(width: 100, height: 100)
                     .cornerRadius(10)
             }
-
+            Spacer()
             VStack(alignment: .leading, spacing: 4) {
                 Text(article.title ?? "")
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("textColor"))
                     .font(.system(size: 18, weight: .semibold))
                 Text(article.source ?? "")
                     .foregroundColor(.gray)
                     .font(.system(size: 12, weight: .regular))
             }
         }
+        .listRowInsets(EdgeInsets())
+        .padding(.vertical, 8)
+        .padding(.horizontal, 16)
+        .cardItemElementShadow()
+        .raisedRoundedBackground()
     }
-}
-
-#Preview {
-    ArticleView(article: Article.dummyData)
-        .previewLayout(.sizeThatFits)
 }

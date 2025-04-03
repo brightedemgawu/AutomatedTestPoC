@@ -34,7 +34,7 @@ class ArticleViewModelImpl: ObservableObject, ArticleViewModel {
                 case let .failure(error):
                     self.state = .failed(error: error)
                 case .finished:
-                    self.state = .success(content: self.articles)
+                    self.state = .loading
                 }
             } receiveValue: { res in
                 self.articles = res.articles
