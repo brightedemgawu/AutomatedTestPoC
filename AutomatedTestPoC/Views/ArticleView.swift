@@ -4,6 +4,7 @@ import URLImage
 
 struct ArticleView: View {
     let article: Article
+    var shouldShimmer: Bool = false
 
     var body: some View {
         HStack {
@@ -51,10 +52,9 @@ struct ArticleView: View {
                     .font(.system(size: 12, weight: .regular))
             }
         }
-        .listRowInsets(EdgeInsets())
-        .padding(.vertical, 8)
-        .padding(.horizontal, 16)
-        .cardItemElementShadow()
+        .shimmer(when: shouldShimmer)
+        .padding(16)
         .raisedRoundedBackground()
+        .cardItemElementShadow()
     }
 }

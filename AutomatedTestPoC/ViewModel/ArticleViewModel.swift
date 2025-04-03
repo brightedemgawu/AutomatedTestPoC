@@ -1,4 +1,3 @@
-
 import Combine
 import Foundation
 
@@ -22,6 +21,8 @@ class ArticleViewModelImpl: ObservableObject, ArticleViewModel {
 
     init(service: ArticleService) {
         self.service = service
+
+        getArticles()
     }
 
     func getArticles() {
@@ -34,7 +35,7 @@ class ArticleViewModelImpl: ObservableObject, ArticleViewModel {
                 case let .failure(error):
                     self.state = .failed(error: error)
                 case .finished:
-                    self.state = .loading
+                    self.state = .success(content: self.articles)
                 }
             } receiveValue: { res in
                 self.articles = res.articles
