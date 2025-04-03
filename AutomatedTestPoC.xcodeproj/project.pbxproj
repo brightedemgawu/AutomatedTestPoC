@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3DEFDFC12D9E7F9400EA1607 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 3DEFDFC02D9E7F9400EA1607 /* URLImage */; };
+		3DEFDFC32D9E7F9400EA1607 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = 3DEFDFC22D9E7F9400EA1607 /* URLImageStore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		3DEA01B32D9D54BF00394F02 /* AutomatedTestPoC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomatedTestPoC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DEFDFC32D9E7F9400EA1607 /* URLImageStore in Frameworks */,
+				3DEFDFC12D9E7F9400EA1607 /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +73,8 @@
 			);
 			name = AutomatedTestPoC;
 			packageProductDependencies = (
+				3DEFDFC02D9E7F9400EA1607 /* URLImage */,
+				3DEFDFC22D9E7F9400EA1607 /* URLImageStore */,
 			);
 			productName = AutomatedTestPoC;
 			productReference = 3DEA01B32D9D54BF00394F02 /* AutomatedTestPoC.app */;
@@ -95,6 +104,9 @@
 			);
 			mainGroup = 3DEA01AA2D9D54BF00394F02;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3DEFDFBF2D9E7F9400EA1607 /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3DEA01B42D9D54BF00394F02 /* Products */;
 			projectDirPath = "";
@@ -350,6 +362,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3DEFDFBF2D9E7F9400EA1607 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3DEFDFC02D9E7F9400EA1607 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DEFDFBF2D9E7F9400EA1607 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		3DEFDFC22D9E7F9400EA1607 /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DEFDFBF2D9E7F9400EA1607 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3DEA01AB2D9D54BF00394F02 /* Project object */;
 }
