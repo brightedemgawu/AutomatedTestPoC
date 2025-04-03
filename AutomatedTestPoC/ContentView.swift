@@ -1,9 +1,7 @@
-
 import Combine
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.openURL) var openURL
     @StateObject var viewModel: ArticleViewModelImpl = ArticleViewModelImpl(service: ArticleServiceImpl())
 
     var body: some View {
@@ -36,10 +34,11 @@ struct ContentView: View {
                 case let .success(content):
 
                     List(content) { article in
-                        ArticleView(article: article)
-                            .onTapGesture {
-                                load(url: article.url)
-                            }
+                        NavigationLink {
+                            ArticleDetailView(article: article)
+                        } label: {
+                            ArticleView(article: article)
+                        }
                     }
                     .listStyle(.sidebar)
                     .contentMargins(.vertical, 8)
@@ -57,14 +56,6 @@ struct ContentView: View {
                 self.viewModel.getArticles()
             }
         }
-    }
-
-    func load(url: String?) {
-        guard let url = url,
-              let linkUrl = URL(string: url) else {
-            return
-        }
-        openURL(linkUrl)
     }
 }
 
