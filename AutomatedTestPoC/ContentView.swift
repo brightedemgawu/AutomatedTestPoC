@@ -6,55 +6,41 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            Group {
-                switch viewModel.state {
-                case .loading:
-
-                    List {
-                        ForEach(0 ..< 11, id: \.self) { _ in
-                            ArticleView(article: .dummyData)
-                                .shimmer(when: true)
+            ScrollView(showsIndicators: false) {
+                Group {
+                    switch viewModel.state {
+                    case .loading:
+                        LazyVStack(spacing: 0) {
+                            ForEach(0 ..< 11, id: \.self) { _ in
+                                ArticleView(
+                                    article: .dummyData,
+                                    shouldShimmer: true
+                                )
+                            }
+                            .padding(.vertical, 4)
                         }
-                        .listStyle(.sidebar)
-                        .contentMargins(.vertical, 8)
-                        .contentMargins(.horizontal, 8)
-                        .listSectionSpacing(0) // removes space between section and next header
-                        .scrollContentBackground(.hidden)
-                        .listRowSpacing(8)
-                        .scrollIndicators(.hidden)
-                        .edgesIgnoringSafeArea(.horizontal)
-                        .background(Color("pageBackground"))
-                        .navigationBarTitle("News")
-                    }
-
-                case let .failed(error):
-                    ErrorView(error: error) {
-                        self.viewModel.getArticles()
-                    }
-                case let .success(content):
-
-                    List(content) { article in
-                        NavigationLink {
-                            ArticleDetailView(article: article)
-                        } label: {
-                            ArticleView(article: article)
+                        .padding(.horizontal, 8)
+                    case let .failed(error):
+                        ErrorView(error: error) {
+                            self.viewModel.getArticles()
                         }
+                    case let .success(content):
+                        LazyVStack(spacing: 0) {
+                            ForEach(content) { article in
+                                NavigationLink {
+                                    ArticleDetailView(article: article)
+                                } label: {
+                                    ArticleView(article: article)
+                                }
+                                .padding(.vertical, 4)
+                            }
+                        }
+                        .padding(.horizontal, 8)
                     }
-                    .listStyle(.sidebar)
-                    .contentMargins(.vertical, 8)
-                    .contentMargins(.horizontal, 8)
-                    .listSectionSpacing(0) // removes space between section and next header
-                    .scrollContentBackground(.hidden)
-                    .listRowSpacing(6)
-                    .scrollIndicators(.hidden)
-                    .edgesIgnoringSafeArea(.horizontal)
-                    .background(Color("pageBackground"))
-                    .navigationBarTitle("News")
                 }
             }
-            .onAppear {
-                self.viewModel.getArticles()
-            }
+            .background(Color("pageBackground"))
+            .navigationBarTitle("News")
         }
     }
 }

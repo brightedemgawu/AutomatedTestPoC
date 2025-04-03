@@ -11,9 +11,9 @@ struct RaisedRoundedBackground: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: 16)
                     .stroke(Color("NewsCardBackground"), lineWidth: 1)
-                    .background(RoundedRectangle(cornerRadius: 20)
+                    .background(RoundedRectangle(cornerRadius: 16)
                         .fill(Color("NewsCardBackground")))
             )
     }
