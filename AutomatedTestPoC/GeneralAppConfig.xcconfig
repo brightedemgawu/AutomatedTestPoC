@@ -7,6 +7,6 @@
 
 // Configuration settings file format documentation can be found at:
 // https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
-BASE_API_URL=
-API_SECRET_KEY=
+BASE_API_URL=newsapi.org
+API_SECRET_KEY=137dee1cfd874df88413635ec5406229
 
