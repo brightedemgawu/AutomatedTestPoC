@@ -14,21 +14,41 @@ extension ArticleAPI: APIBuilder {
     var baseUrl: URL {
         switch self {
         case .getNews:
-            return URL(string: "https://api.lil.software")!
+            return getUrl()
         }
     }
 
     var path: String {
         switch self {
         case .getNews:
-            return "/news"
+            return "/v2/top-headlines"
         }
     }
 
     var urlRequest: URLRequest {
+        getUrlRequest()
+    }
+
+    private func getUrlRequest() -> URLRequest {
         switch self {
         case .getNews:
-            return URLRequest(url: baseUrl.appendingPathComponent(path))
+            var components = URLComponents(
+                url: baseUrl.appendingPathComponent(path),
+                resolvingAgainstBaseURL: false)
+                ?? URLComponents()
+            components.queryItems = [
+                URLQueryItem(name: "country", value: "us"),
+                URLQueryItem(name: "apiKey", value: Configurator.shared.apikey)
+            ]
+            return URLRequest(url: components.url ?? baseUrl)
         }
+    }
+
+    private func getUrl() -> URL {
+        let baseUrl = Configurator.shared.baseURL
+        guard let url = URL(string: "\(baseUrl)") else {
+            fatalError("Failed to create URL with url \(baseUrl)")
+        }
+        return url
     }
 }

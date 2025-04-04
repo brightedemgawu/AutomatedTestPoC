@@ -15,9 +15,22 @@
 		3DEA01B32D9D54BF00394F02 /* AutomatedTestPoC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomatedTestPoC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3DAE59312D9FD50700D7467E /* Exceptions for "AutomatedTestPoC" folder in "AutomatedTestPoC" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 3DEA01B22D9D54BF00394F02 /* AutomatedTestPoC */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3DEA01B52D9D54BF00394F02 /* AutomatedTestPoC */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3DAE59312D9FD50700D7467E /* Exceptions for "AutomatedTestPoC" folder in "AutomatedTestPoC" target */,
+			);
 			path = AutomatedTestPoC;
 			sourceTree = "<group>";
 		};
@@ -163,6 +176,8 @@
 /* Begin XCBuildConfiguration section */
 		3DEA01BC2D9D54C100394F02 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 3DEA01B52D9D54BF00394F02 /* AutomatedTestPoC */;
+			baseConfigurationReferenceRelativePath = GeneralAppConfig.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -227,6 +242,8 @@
 		};
 		3DEA01BD2D9D54C100394F02 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 3DEA01B52D9D54BF00394F02 /* AutomatedTestPoC */;
+			baseConfigurationReferenceRelativePath = GeneralAppConfig.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -284,15 +301,19 @@
 		};
 		3DEA01BF2D9D54C100394F02 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 3DEA01B52D9D54BF00394F02 /* AutomatedTestPoC */;
+			baseConfigurationReferenceRelativePath = GeneralAppConfig.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T5TYL5WP38;
+				DEVELOPMENT_TEAM = R85N7Z4DTZ;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AutomatedTestPoC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -306,6 +327,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brightedemgawu.AutomatedTestPoC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -314,15 +336,19 @@
 		};
 		3DEA01C02D9D54C100394F02 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 3DEA01B52D9D54BF00394F02 /* AutomatedTestPoC */;
+			baseConfigurationReferenceRelativePath = GeneralAppConfig.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T5TYL5WP38;
+				DEVELOPMENT_TEAM = R85N7Z4DTZ;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AutomatedTestPoC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -336,6 +362,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.brightedemgawu.AutomatedTestPoC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

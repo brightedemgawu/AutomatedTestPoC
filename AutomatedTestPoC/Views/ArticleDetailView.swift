@@ -5,6 +5,11 @@ struct ArticleDetailView: View {
     @Environment(\.openURL) private var openURL
     let article: Article
 
+    private var isTruncated: Bool {
+        guard let content = article.content else { return false }
+        return content.contains("… [+") && content.contains("chars]")
+    }
+
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
@@ -16,15 +21,16 @@ struct ArticleDetailView: View {
             imageView
             VStack(spacing: 10) {
                 metadataView
-                descriptionView
+                contentView
             }
             .padding(.horizontal, 10)
         }
+        .background(.pageBackground)
     }
 
     private var headerView: some View {
         HStack {
-            Text(article.source ?? "Unknown Source")
+            Text(article.source?.name ?? "Unknown Source")
                 .font(.caption)
                 .fontWeight(.bold)
                 .foregroundStyle(.secondary)
@@ -39,21 +45,38 @@ struct ArticleDetailView: View {
 
     private var titleView: some View {
         Text(article.title ?? "No Title")
+            .foregroundColor(Color("textColor"))
             .font(.title)
             .fontWeight(.bold)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var descriptionView: some View {
-        Text(article.welcomeDescription ?? "No description available")
+        Text(article.description ?? "No description available")
             .font(.body)
             .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 
+    private var contentView: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(article.content ?? "No content available")
+                .foregroundStyle(.secondary)
+
+            if isTruncated {
+                Button("Read More") {
+                    load(url: article.url)
+                }
+                .foregroundStyle(.blue)
+            }
+        }
+        .font(.body)
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
     private var imageView: some View {
         Group {
-            if let imageUrl = article.image.flatMap(URL.init) {
+            if let imageUrl = article.urlToImage.flatMap(URL.init) {
                 AsyncImage(url: imageUrl) { phase in
                     switch phase {
                     case .empty:
@@ -76,19 +99,21 @@ struct ArticleDetailView: View {
     }
 
     private var placeholderView: some View {
-        Image(systemName: "photo.fill")
-            .font(.largeTitle)
-            .foregroundStyle(.primary)
+        Image(.no)
+            .resizable()
+            .scaledToFit()
             .frame(maxWidth: .infinity)
             .frame(height: 300)
-            .background(Color.gray.opacity(0.2))
     }
 
     private var metadataView: some View {
         HStack {
             Text(article.author ?? "")
             Spacer()
-            Text(article.date?.formatted(.dateTime.month(.wide).day()) ?? "")
+            Text(
+                article.publishedAt?
+                    .formatted(.dateTime.month(.wide).day()) ?? ""
+            )
         }
         .font(.caption2)
         .foregroundStyle(.secondary)
