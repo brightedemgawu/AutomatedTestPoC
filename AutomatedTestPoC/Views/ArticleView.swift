@@ -7,9 +7,8 @@ struct ArticleView: View {
     var shouldShimmer: Bool = false
 
     var body: some View {
-        HStack {
-            // TODO: Add image view
-            if let image = article.image,
+        HStack(spacing: 10) {
+            if let image = article.urlToImage,
                let url = URL(string: image) {
                 URLImage(url, identifier: url.absoluteString) {
                     // This view is displayed before download starts
@@ -17,13 +16,15 @@ struct ArticleView: View {
                 } inProgress: { _ in
                     // Display progress
                     ProgressView()
-                } failure: { _, _ in
-                    // Display error and retry button
-                    Image(systemName: "photo.fill")
-                        .foregroundColor(.white)
-                        .background(Color.gray)
                         .frame(width: 100, height: 100)
                         .cornerRadius(10)
+                } failure: { _, _ in
+                    // Display error and retry button
+                    Image(.no)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                 } content: { image in
                     // Downloaded image
                     image
@@ -36,22 +37,24 @@ struct ArticleView: View {
                              .init(fetchPolicy: .returnStoreElseLoad(downloadDelay: nil)))
 
             } else {
-                Image(systemName: "photo.fill")
-                    .foregroundColor(.white)
-                    .background(Color.gray)
+                Image(.no)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
-                    .cornerRadius(10)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
             }
-            Spacer()
             VStack(alignment: .leading, spacing: 4) {
                 Text(article.title ?? "")
                     .foregroundColor(Color("textColor"))
                     .font(.system(size: 18, weight: .semibold))
-                Text(article.source ?? "")
+                    .multilineTextAlignment(.leading)
+                Text(article.source?.name ?? "")
                     .foregroundColor(.gray)
                     .font(.system(size: 12, weight: .regular))
+                    .multilineTextAlignment(.leading)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .shimmer(when: shouldShimmer)
         .padding(16)
         .raisedRoundedBackground()

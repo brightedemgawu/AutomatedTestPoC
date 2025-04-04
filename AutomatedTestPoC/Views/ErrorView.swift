@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 typealias EmptyStateActionHandler = () -> Void
@@ -36,6 +35,7 @@ struct ErrorView: View {
             .foregroundColor(.white)
             .cornerRadius(10)
         }
+        .frame(maxWidth: .infinity)
     }
 }
 

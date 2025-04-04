@@ -1,0 +1,12 @@
+//
+//  GeneralAppConfig.xcconfig
+//  AutomatedTestPoC
+//
+//  Created by AMALITECH-PC-105889 on 4/4/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+BASE_API_URL=
+API_SECRET_KEY=
+
